@@ -22,9 +22,12 @@ public class StudentController {
 
     @GetMapping("/students")
     public String getStudents(@RequestHeader(value = "Accept") String acceptHeader) {
-        if (acceptHeader.equals("text/plain")) {
-            return studentList.toString();
+        if (!acceptHeader.equals("text/plain")) {
+            return "Format non supporté";
         }
-        return "Format non supporté";
+        return studentList.stream()
+                .map(s -> s.getFirstName() + " " + s.getLastName())
+                .toList()
+                .toString();
     }
 }

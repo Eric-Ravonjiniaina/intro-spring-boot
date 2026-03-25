@@ -1,4 +1,4 @@
-package com.hei_school.query_param.Repository;
+package com.hei_school.query_param.entity;
 
 public class Student {
     private String reference;
